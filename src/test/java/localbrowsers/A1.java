@@ -28,8 +28,14 @@ public class A1 {
 
     public static void main(String[] args)
         throws InterruptedException {
-
         System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+        while (true) {
+            runTest();
+        }
+    }
+
+    public static void runTest()
+        throws InterruptedException {
 
         Map<String, Object> deviceMetrics = new HashMap<>();
         deviceMetrics.put("width", 768);
@@ -55,7 +61,6 @@ public class A1 {
             // Tell webdriver to wait
             WebDriverWait wait = new WebDriverWait(driver, 10);
 
-
             // Screenshot screenshot = new AShot().takeScreenshot(driver);
             // ImageIO.write(screenshot.getImage(), "jpg", new File("/users/armangal/ashot/ElementScreenshot-" + UUID.randomUUID().toString() + ".jpg"));
 
@@ -71,7 +76,7 @@ public class A1 {
                 }
             }
 
-            takeSnapShot(driver, "/users/armangal/ashot/pic1-" + UUID.randomUUID().toString() + ".jpg");
+            takeSnapShot(driver, "/users/arman/temp/ashot/pic1-" + UUID.randomUUID().toString() + ".jpg");
 
             System.out.println("Enter username");
             WebElement userName = driver.findElement(By.id("Center_LoginResponsiveBlock_17114-responsive-login-name-input"));
@@ -113,7 +118,7 @@ public class A1 {
                 Thread.sleep(5000);
                 // takeSnapShot(casinoFrame, "/users/armangal/ashot/cas-" + UUID.randomUUID().toString() + ".jpg");
                 Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(3000)).takeScreenshot(casinoFrame);
-                ImageIO.write(screenshot.getImage(), "jpg", new File("/users/armangal/ashot/cas-" + i + "-" + UUID.randomUUID().toString() + ".jpg"));
+                ImageIO.write(screenshot.getImage(), "jpg", new File("/users/arman/temp/ashot/cas-" + i + "-" + UUID.randomUUID().toString() + ".jpg"));
 
                 WebElement amount = casinoFrame.findElement(By.xpath("//*[@id=\"balanceAmount\"]"));
                 System.out.println("Balance after:" + amount.getText());
